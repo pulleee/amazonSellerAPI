@@ -1,0 +1,36 @@
+﻿@* Pages/Components/LogTerminalComponent.razor *@
+<div class="log-terminal">
+        @foreach (var log in logs)
+        {
+            <p>@log</p>
+        }
+</div>
+
+@code {
+    private List<string> logs = new List<string>();
+    private int logCounter = 1;
+    private Timer logTimer;
+
+    protected override void OnInitialized()
+    {
+        // Start a timer to add log messages at regular intervals.
+        logTimer = new Timer(AddLogMessage, null, 1000, 2000);
+    }
+
+    private void AddLogMessage(object state)
+    {
+        // Simulate log messages
+        logs.Add($"Log message #{logCounter++} at {DateTime.Now:HH:mm:ss}");
+        // Keep only the last 10 messages
+        if (logs.Count > 10)
+        {
+            logs.RemoveAt(0);
+        }
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        logTimer?.Dispose();
+    }
+}

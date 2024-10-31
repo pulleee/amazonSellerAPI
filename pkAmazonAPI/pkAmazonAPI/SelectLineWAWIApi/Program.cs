@@ -19,5 +19,8 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 // Add Syncfusion
 builder.Services.AddSyncfusionBlazor();
 
+// Syncfusion Licensing
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWGRCf1JpRmNGfV5ycEVFallWTnRaUiweQnxTdEFiWXxfcHNXQmRVVEd0Vw==");
+
 // Run
 await builder.Build().RunAsync();

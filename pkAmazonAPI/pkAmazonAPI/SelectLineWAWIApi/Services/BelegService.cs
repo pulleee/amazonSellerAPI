@@ -12,6 +12,16 @@ public class BelegService
         _context = context;
     }
 
+    public List<BelegDTO> GetTestBelege()
+    {
+        return new List<BelegDTO>
+        {
+            new BelegDTO { BELEG_ID = 1, Name = "TestBeleg1", Datum = DateTime.Now, Brutto = 75000 },
+            new BelegDTO { BELEG_ID = 2, Name = "TestBeleg2", Datum = DateTime.Now, Brutto = 65000 },
+            new BelegDTO { BELEG_ID = 3, Name = "TestBeleg3", Datum = DateTime.Now, Brutto = 55000 }
+        };
+    }
+
     // Get a list of all Belege
     public async Task<List<Beleg>> GetAllBelegeAsync()
     {

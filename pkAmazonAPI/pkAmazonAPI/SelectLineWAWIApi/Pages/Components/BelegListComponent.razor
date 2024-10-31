@@ -1,0 +1,23 @@
+﻿@* Pages/Components/BelegListComponent.razor *@
+@inject BelegService BelegService
+
+@using SelectLineWAWIDataAccess.DTOs
+@using Syncfusion.Blazor.Grids
+
+<SfGrid DataSource="@Belege" AllowPaging="true" PageSettings="new Syncfusion.Blazor.Grids.GridPageSettings { PageSize = 5 }" AllowSorting="true">
+    <GridColumns>
+        <GridColumn Field="BELEG_ID" HeaderText="ID" Width="100" TextAlign="TextAlign.Center"></GridColumn>
+        <GridColumn Field="Name" HeaderText="Name" Width="200"></GridColumn>
+        <GridColumn Field="Datum" HeaderText="Position" Width="200"></GridColumn>
+        <GridColumn Field="Brutto" HeaderText="Salary" Width="150" Format="C2" TextAlign="TextAlign.Right"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+    private List<BelegDTO> Belege;
+
+    protected override void OnInitialized()
+    {
+        Belege = BelegService.GetTestBelege();
+    }
+}

@@ -1,37 +1,23 @@
 ﻿@page "/dashboard"
 @using Syncfusion.Blazor.Layouts
 @using Syncfusion.Blazor.Buttons
+@using SelectLineWAWIApi.Pages.Components
 
 <div class="control-section" id="target">
     <div style="padding-right:10px;padding-bottom:10px;text-align: right;">
         <SfButton CssClass="e-btn e-primary" Content="Add Panel" @onclick="AddClick"></SfButton>
     </div>
 
-    <SfDashboardLayout @ref="dashboardObject" Columns="5" AllowResizing="true">
+    <SfDashboardLayout @ref="dashboardObject" Columns="3" AllowResizing="true">
         <DashboardLayoutPanels>
-            <DashboardLayoutPanel Id="one" Column="0" Row="0">
-                <HeaderTemplate>Panel 1</HeaderTemplate>
+            <DashboardLayoutPanel Id="one" Content="@LogTerminalComponent" Column="0" Row="0">
+                <HeaderTemplate>Log</HeaderTemplate>
             </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="two" Row="1" Column="0" SizeX=1 SizeY=2>
-                <HeaderTemplate>Panel 2</HeaderTemplate>
+            <DashboardLayoutPanel Id="two" Content="@ActionsComponent" Row="1" Column="0" SizeX=1 SizeY=1>
+                <HeaderTemplate>Aktionen</HeaderTemplate>
             </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="three" Row="0" Column="1" SizeX=2 SizeY=2>
-                <HeaderTemplate>Panel 3</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="four" Row="2" Column="1" SizeX=1 SizeY=1>
-                <HeaderTemplate>Panel 4</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="five" Row="2" Column="2" SizeX=2 SizeY=1>
-                <HeaderTemplate>Panel 5</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="six" Row="0" Column="3" SizeX=1 SizeY=1>
-                <HeaderTemplate>Panel 6</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="seven" Row="1" Column="3" SizeX=1 SizeY=1>
-                <HeaderTemplate>Panel 7</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="eight" Row="0" Column="4" SizeX=1 SizeY=3>
-                <HeaderTemplate>Panel 8</HeaderTemplate>
+            <DashboardLayoutPanel Id="three" Content="@BelegListComponent" Row="0" Column="1" SizeX=2 SizeY=2>
+                <HeaderTemplate>Belege</HeaderTemplate>
             </DashboardLayoutPanel>
         </DashboardLayoutPanels>
     </SfDashboardLayout>
@@ -55,7 +41,12 @@
         await dashboardObject.AddPanelAsync(panel);
         this.Count = this.Count + 1;
     }
+
+    RenderFragment LogTerminalComponent => builder => { builder.OpenComponent(0, typeof(LogTerminalComponent)); builder.CloseComponent(); };
+    RenderFragment ActionsComponent => builder => { builder.OpenComponent(0, typeof(ActionsComponent)); builder.CloseComponent(); };
+    RenderFragment BelegListComponent => builder => { builder.OpenComponent(0, typeof(BelegListComponent)); builder.CloseComponent(); };
 }
+
 <style>
     .e-dashboardlayout {
         padding: 10px;
