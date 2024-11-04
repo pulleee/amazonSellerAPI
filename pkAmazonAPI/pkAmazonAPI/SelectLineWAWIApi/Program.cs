@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using SelectLineWAWIApi;
+using SelectLineWAWIApi.Services.Logging;
 using SelectLineWAWIDataAccess.Database;
 using Syncfusion.Blazor;
 
@@ -13,14 +14,22 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 
 // Register services
 builder.Services.AddSingleton<WAWIDbContext>();
+builder.Services.AddSingleton<LogService>();
 builder.Services.AddScoped<BelegService>();
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Add Syncfusion
 builder.Services.AddSyncfusionBlazor();
-
-// Syncfusion Licensing
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NDaF5cWGRCf1JpRmNGfV5ycEVFallWTnRaUiweQnxTdEFiWXxfcHNXQmRVVEd0Vw==");
 
-// Run
-await builder.Build().RunAsync();
+// Build Host
+var host = builder.Build();
+
+// Add Logging
+var logger = host.Services.GetRequiredService<ILoggerFactory>()
+    .CreateLogger<Program>();
+
+// Run Host
+await host.RunAsync();
+
+logger.LogInformation("Running...");

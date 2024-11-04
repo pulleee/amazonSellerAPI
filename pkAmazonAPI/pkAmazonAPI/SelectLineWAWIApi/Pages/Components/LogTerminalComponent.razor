@@ -1,36 +1,44 @@
 ﻿@* Pages/Components/LogTerminalComponent.razor *@
+@using SelectLineWAWIApi.Services.Logging
+@inject LogService LogService
+
 <div class="log-terminal">
-        @foreach (var log in logs)
+    <div class="logs">
+        @foreach (var log in LogService.Logs)
         {
-            <p>@log</p>
+            <div class="text-white">[@log.Timestamp] <span class="@GetLogClass(log.LogLevel)">[@log.LogLevel]</span> @log.Message</div>
         }
+    </div>
 </div>
 
-@code {
-    private List<string> logs = new List<string>();
-    private int logCounter = 1;
-    private Timer logTimer;
+<style>
+    .log-box {
+        padding: 10px;
+        border: 1px solid #ccc;
+        max-height: 200px;
+        overflow-y: auto;
+    }
 
+    .logs p {
+        margin: 0;
+        font-family: monospace;
+    }
+</style>
+
+@code {
     protected override void OnInitialized()
     {
-        // Start a timer to add log messages at regular intervals.
-        logTimer = new Timer(AddLogMessage, null, 1000, 2000);
+        LogService.AddLog(LogLevel.Info, "Initialized LogTerminal");
     }
 
-    private void AddLogMessage(object state)
+    private string GetLogClass(LogLevel level)
     {
-        // Simulate log messages
-        logs.Add($"Log message #{logCounter++} at {DateTime.Now:HH:mm:ss}");
-        // Keep only the last 10 messages
-        if (logs.Count > 10)
+        return level switch
         {
-            logs.RemoveAt(0);
-        }
-        InvokeAsync(StateHasChanged);
-    }
-
-    public void Dispose()
-    {
-        logTimer?.Dispose();
+            LogLevel.Info => "text-primary",
+            LogLevel.Warning => "text-warning",
+            LogLevel.Error => "text-danger",
+            _ => string.Empty,
+        };
     }
 }
