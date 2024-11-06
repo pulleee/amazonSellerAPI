@@ -1,7 +1,8 @@
 ﻿@* Pages/Components/BelegListComponent.razor *@
 @inject BelegService BelegService
 
-@using SelectLineWAWIDataAccess.DTOs
+@using SelectLineWAWIApiCore.Client.Services
+@using SelectLineWAWIApiCore.Shared.DTOs
 @using Syncfusion.Blazor.Grids
 
 <SfGrid DataSource="@Belege" AllowPaging="true" PageSettings="new Syncfusion.Blazor.Grids.GridPageSettings { PageSize = 5 }" AllowSorting="true">
@@ -16,8 +17,9 @@
 @code {
     private List<BelegDTO> Belege;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        Belege = BelegService.GetTestBelege();
+        // TODO Get Amazon Belege
+        //Belege = await BelegService.GetAllBelegeAsync();
     }
 }

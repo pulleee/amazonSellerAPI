@@ -1,8 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using SelectLineWAWIApi;
-using SelectLineWAWIApi.Services.Logging;
-using SelectLineWAWIDataAccess.Database;
+using SelectLineWAWIApiCore.Client;
+using SelectLineWAWIApiCore.Client.Services;
 using Syncfusion.Blazor;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -13,10 +12,9 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
 // Register services
-builder.Services.AddSingleton<WAWIDbContext>();
 builder.Services.AddSingleton<LogService>();
 builder.Services.AddScoped<BelegService>();
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddScoped(sp => new HttpClient {BaseAddress = new Uri(builder.Configuration.GetConnectionString("Host")) });
 
 // Add Syncfusion
 builder.Services.AddSyncfusionBlazor();

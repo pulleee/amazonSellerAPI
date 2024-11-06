@@ -1,8 +1,7 @@
-﻿using SelectLineWAWILib.Models;
+﻿using SelectLineWAWIApiCore.Shared.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
-namespace SelectLineWAWIDataAccess.Database
+namespace SelectLineWAWIApiCore.Server.Database
 {
     public class WAWIDbContext : DbContext
     {

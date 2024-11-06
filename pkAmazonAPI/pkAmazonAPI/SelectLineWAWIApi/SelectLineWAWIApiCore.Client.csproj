@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SelectLineWAWIDataAccess\SelectLineWAWIDataAccess.csproj" />
+    <ProjectReference Include="..\..\..\pkAmazonAPI_new\SelectLineWAWIApiCore\SelectLineWAWIApiCore.Shared\SelectLineWAWIApiCore.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

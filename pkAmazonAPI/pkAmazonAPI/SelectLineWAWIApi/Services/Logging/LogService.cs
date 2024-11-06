@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace SelectLineWAWIApi.Services.Logging
+namespace SelectLineWAWIApiCore.Client.Services
 {
     public enum LogLevel
     {

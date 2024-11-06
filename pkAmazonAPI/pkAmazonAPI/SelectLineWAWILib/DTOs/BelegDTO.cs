@@ -1,4 +1,4 @@
-﻿namespace SelectLineWAWIDataAccess.DTOs
+﻿namespace SelectLineWAWILib.DTOs
 {
     public class BelegDTO
     {

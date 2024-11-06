@@ -1,67 +1,45 @@
-using Microsoft.EntityFrameworkCore;
-using SelectLineWAWIDataAccess.Database;
-using SelectLineWAWIDataAccess.DTOs;
-using SelectLineWAWILib.Models;
+using System.Net.Http.Json;
+using SelectLineWAWIApiCore.Shared.DTOs;
 
-public class BelegService
+namespace SelectLineWAWIApiCore.Client.Services
 {
-    private readonly WAWIDbContext _context;
-
-    public BelegService(WAWIDbContext context)
+    public class BelegService
     {
-        _context = context;
-    }
+        private readonly HttpClient _httpClient;
 
-    public List<BelegDTO> GetTestBelege()
-    {
-        return new List<BelegDTO>
+        public BelegService(HttpClient httpClient)
         {
-            new BelegDTO { BELEG_ID = 1, Name = "TestBeleg1", Datum = DateTime.Now, Brutto = 75000 },
-            new BelegDTO { BELEG_ID = 2, Name = "TestBeleg2", Datum = DateTime.Now, Brutto = 65000 },
-            new BelegDTO { BELEG_ID = 3, Name = "TestBeleg3", Datum = DateTime.Now, Brutto = 55000 }
-        };
-    }
+            _httpClient = httpClient;
+        }
 
-    // Get a list of all Belege
-    public async Task<List<Beleg>> GetAllBelegeAsync()
-    {
-        return await _context.Belege.ToListAsync();
-    }
+        // Get a list of all Belege
+        public async Task<List<BelegDTO>> GetAllBelegeAsync()
+        {
+            return await _httpClient.GetFromJsonAsync<List<BelegDTO>>("api/belege");
+        }
 
-    // Get a single Beleg by ID
-    public async Task<Beleg> GetBelegByIdAsync(int id)
-    {
-        return await _context.Belege.FindAsync(id);
-    }
+        // Get a single Beleg by ID
+        public async Task<BelegDTO> GetBelegByIdAsync(int id)
+        {
+            return await _httpClient.GetFromJsonAsync<BelegDTO>($"api/belege/{id}");
+        }
 
-    // Add a new Beleg
-    public async Task AddBelegAsync(Beleg beleg)
-    {
-        _context.Belege.Add(beleg);
-        await _context.SaveChangesAsync();
-    }
+        // Add a new Beleg
+        public async Task AddBelegAsync(BelegDTO belegDto)
+        {
+            await _httpClient.PostAsJsonAsync("api/belege", belegDto);
+        }
 
-    // Update an existing Beleg
-    public async Task UpdateBelegAsync(Beleg beleg)
-    {
-        _context.Belege.Update(beleg);
-        await _context.SaveChangesAsync();
-    }
+        // Update an existing Beleg
+        public async Task UpdateBelegAsync(BelegDTO belegDto)
+        {
+            await _httpClient.PutAsJsonAsync($"api/belege/{belegDto.Belegnummer}", belegDto);
+        }
 
-    public async Task<List<BelegDTO>> GetBelegDtosAsync()
-    {
-        return await _context.Belege
-            .Select(b => new BelegDTO
-            {
-                BELEG_ID = b.BELEG_ID,
-                Belegnummer = b.Belegnummer,
-                Datum = b.Datum,
-                Name = b.Name,
-                Firma = b.Firma,
-                Ort = b.Ort,
-                Brutto = b.Brutto,
-                Netto = b.Netto
-            })
-            .ToListAsync();
+        // Delete a Beleg by ID
+        public async Task DeleteBelegAsync(int id)
+        {
+            await _httpClient.DeleteAsync($"api/belege/{id}");
+        }
     }
 }

@@ -1,0 +1,6 @@
+@SelectLineWAWIApiCore.Server_HostAddress = http://localhost:5125
+
+GET {{SelectLineWAWIApiCore.Server_HostAddress}}/Beleg
+Accept: application/json
+
+###

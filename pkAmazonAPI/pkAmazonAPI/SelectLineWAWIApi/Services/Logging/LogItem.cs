@@ -1,4 +1,4 @@
-﻿namespace SelectLineWAWIApi.Services.Logging
+﻿namespace SelectLineWAWIApiCore.Client.Services
 {
     public class LogItem
     {

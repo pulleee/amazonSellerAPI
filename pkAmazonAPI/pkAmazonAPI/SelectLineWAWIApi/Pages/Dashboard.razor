@@ -1,13 +1,31 @@
-﻿@page "/dashboard"
+﻿@page "/"
+@using SelectLineWAWIApiCore.Client.Pages.Components
+@using Syncfusion.Blazor.Inputs
 @using Syncfusion.Blazor.Layouts
 @using Syncfusion.Blazor.Buttons
-@using SelectLineWAWIApi.Pages.Components
+@using Syncfusion.Blazor.Popups
+@using System.Text.Json
+@using SelectLineWAWIApiCore.Client.Services
+@inject LogService LogService
 
 <div class="control-section" id="target">
     <div style="padding-right:10px;padding-bottom:10px;text-align: right;">
         <SfButton CssClass="e-btn e-primary" Content="Add Panel" @onclick="AddClick"></SfButton>
-        <SfButton CssClass="e-btn e-primary" Content="Manueller Upload" @onclick="ManualUpload"></SfButton>
+        <SfButton CssClass="e-btn e-primary" Content="Manueller Upload" @onclick="ShowFileUloadDialog"></SfButton>
     </div>
+
+    <!-- Manual Report to Beleg Upload -->
+    <SfDialog Target="#target" ShowCloseIcon="true" @bind-Visible="FileUploadVisibility" AllowPrerender="true" IsModal="true">
+        <DialogTemplates>
+            <Header>Manueller Upload</Header>
+            <Content>
+                <SfUploader ID="UploadFiles" AutoUpload="false" AllowedExtensions=".txt">
+                    <UploaderAsyncSettings SaveUrl="https://localhost:7168/api/Beleg/UploadFiles"></UploaderAsyncSettings>
+                    <UploaderEvents OnFailure="@OnFailureHandler" OnActionComplete="@OnActionCompleteHandler" Success="@OnSuccessHandler"></UploaderEvents>
+                </SfUploader>
+            </Content>
+        </DialogTemplates>
+    </SfDialog>
 
     <SfDashboardLayout @ref="dashboardObject" Columns="3" AllowResizing="true">
         <DashboardLayoutPanels>
@@ -25,6 +43,8 @@
 </div>
 
 @code {
+    public bool FileUploadVisibility { get; set; } = false;
+
     SfDashboardLayout dashboardObject;
     public int panelCount = 4;
 
@@ -44,9 +64,70 @@
         this.panelCount = this.panelCount + 1;
     }
 
-    public async Task ManualUpload(EventArgs args)
+    private void OnFailureHandler(FailureEventArgs args)
     {
+        if (args.Response != null)
+        {
+            var responseText = args.Response.ResponseText;
+            if (!string.IsNullOrWhiteSpace(responseText))
+            {
+                // for JSON and File Datas
+                using var jsonDoc = JsonDocument.Parse(responseText);
+                var jsonResponse = jsonDoc.RootElement;
 
+                if (jsonResponse.TryGetProperty("success", out var successProp))
+                {
+                    var isSuccess = successProp.GetBoolean();
+
+                    if (!isSuccess)
+                    {
+                        // File upload success
+                        var message = jsonResponse.TryGetProperty("message", out var messageProp) ? messageProp.GetString() : "File uploaded successfully";
+
+                        // TODO Show in Grid
+                        LogService.AddLog(LogLevel.Warning, message);
+                    }
+                }
+            }
+        }
+    }
+
+    private void OnActionCompleteHandler(ActionCompleteEventArgs args)
+    {
+        
+    }
+
+    private void OnSuccessHandler(SuccessEventArgs args)
+    {
+        if (args.Response != null) 
+        {
+            var responseText = args.Response.ResponseText;
+            if (!string.IsNullOrWhiteSpace(responseText))
+            {
+                // for JSON and File Datas
+                using var jsonDoc = JsonDocument.Parse(responseText);
+                var jsonResponse = jsonDoc.RootElement;
+
+                if (jsonResponse.TryGetProperty("success", out var successProp))
+                {
+                    var isSuccess = successProp.GetBoolean();
+
+                    if (isSuccess)
+                    {
+                        // File upload success
+                        var message = jsonResponse.TryGetProperty("message", out var messageProp) ? messageProp.GetString() : "File uploaded successfully";
+
+                        // TODO Show in Grid
+                        LogService.AddLog(LogLevel.Info, message);
+                    }
+                }
+            }
+        }
+    }
+
+    public void ShowFileUloadDialog(EventArgs args)
+    {
+        FileUploadVisibility = true;
     }
 
     RenderFragment LogTerminalComponent => builder => { builder.OpenComponent(0, typeof(LogTerminalComponent)); builder.CloseComponent(); };
