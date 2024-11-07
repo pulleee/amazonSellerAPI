@@ -1,0 +1,37 @@
+﻿@* Pages/Components/BelegListComponent.razor *@
+@using SelectLineWAWIApiCore.Client.Services
+@using SelectLineWAWIApiCore.Shared.DTOs
+@using Syncfusion.Blazor.Grids
+@inject BelegService BelegService
+@inject LogService LogService
+
+
+@if(Belege == null)
+{
+    <div class="d-flex justify-content-center h-100">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+}
+else
+{
+    <SfGrid DataSource="@Belege" AllowPaging="true" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="Belegnummer" HeaderText="Belegnummer" Width="200" TextAlign="TextAlign.Center"></GridColumn>
+            <GridColumn Field="Firma" HeaderText="Firma" Width="200"></GridColumn>
+            <GridColumn Field="Datum" HeaderText="Datum" Width="200"></GridColumn>
+            <GridColumn Field="Netto" HeaderText="Netto" Width="200"></GridColumn>
+            <GridColumn Field="Brutto" HeaderText="Brutto" Width="200" TextAlign="TextAlign.Right"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+}
+
+@code {
+    private List<BelegDTO> Belege;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Belege = await BelegService.GetAllBelegeAsync();
+    }
+}
