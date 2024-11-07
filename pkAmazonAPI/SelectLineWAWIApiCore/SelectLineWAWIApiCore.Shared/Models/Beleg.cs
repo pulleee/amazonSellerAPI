@@ -132,7 +132,6 @@
         public string? Meldeland { get; set; }
         public DateTime? Leistungsdatum { get; set; }
         public string? Zahlungsreferenz { get; set; }
-        public byte[] TS { get; set; } 
-        public string? Anzeigename { get; set; }        
+        public byte[] TS { get; set; }     
     }
 }

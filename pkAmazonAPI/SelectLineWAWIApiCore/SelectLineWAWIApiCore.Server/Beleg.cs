@@ -144,7 +144,6 @@ namespace SelectLineWAWIApiCore.Server
 
         [Timestamp]
         public byte[] TS { get; set; } // Non-nullable timestamp for concurrency
-        public string? Anzeigename { get; set; }
 
         public static Beleg MapToBeleg(BelegReport report)
         {
