@@ -2,6 +2,7 @@
 @using SelectLineWAWIApiCore.Client.Services
 @using SelectLineWAWIApiCore.Shared.DTOs
 @using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Spinner
 @inject BelegService BelegService
 @inject LogService LogService
 
@@ -9,8 +10,9 @@
 @if(Belege == null)
 {
     <div class="d-flex justify-content-center h-100">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+        <div id="container">
+            <SfSpinner CssClass="e-customClass">
+            </SfSpinner>
         </div>
     </div>
 }
@@ -26,6 +28,12 @@ else
         </GridColumns>
     </SfGrid>
 }
+
+<style>
+    .e-spinner-pane.e-customClass .e-spinner-inner .e-spin-material {
+        stroke: #808080;
+    }
+</style>
 
 @code {
     private List<BelegDTO> Belege;

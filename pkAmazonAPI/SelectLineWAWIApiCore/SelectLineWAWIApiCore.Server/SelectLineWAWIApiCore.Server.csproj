@@ -14,8 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\pkAmazonAPI\pkAmazonAPI\SelectLineWAWIApi\SelectLineWAWIApiCore.Client.csproj" />
+    <ProjectReference Include="..\SelectLineWAWIApiCore.Client\SelectLineWAWIApiCore.Client.csproj" />
     <ProjectReference Include="..\SelectLineWAWIApiCore.Shared\SelectLineWAWIApiCore.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Server\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,6 @@
+Zusammenfassung der Feedverarbeitung:
+	Anzahl verarbeiteter Datensätze		1
+	Anzahl erfolgreich verarbeiteter Datensätze		0
+
+Original-Datensatz-Nr	SKU	Fehlercode	Fehlertyp	Fehlermeldungstext
+1		79513	Fehler	Please provide metadata:shippingid or metadata:orderid,metadata:invoicenumber,metadata:totalamount,metadata:totalvatamount

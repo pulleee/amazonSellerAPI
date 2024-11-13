@@ -37,8 +37,6 @@ namespace SelectLineWAWIApiCore.Server.Controllers
         }
 
         // POST: api/beleg
-
-
         [HttpPost]
         public async Task<ActionResult> AddBeleg(BelegDTO belegDto)
         {

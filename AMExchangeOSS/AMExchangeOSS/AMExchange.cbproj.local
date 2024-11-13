@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.343,=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\SLOrder.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.997,C:\pk-ware\Packages\SLNativ\FMemoEingabeDialog.h=C:\pk-ware\Packages\SLNativ\FEingabeDialog.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.038,=C:\pk-ware\Packages\SLNativ\FEingabeDialog.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.691,C:\pk-ware\eigene projekte\2020\10.4\AMExchange\FVersanddaten.h=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.483,C:\pk-ware\eigene projekte\2020\AMExchange\VCLWawiDirekt.cbproj=C:\pk-ware\eigene projekte\2020\AMExchange\AMExchange.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.093,C:\pk-ware\Packages\SLNativ\Wawi.cpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.130,=C:\pk-ware\Packages\SLNativ\Wawi.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.439,C:\pk-ware\eigene projekte\2020\AMExchange\VCLWawiDirektPCH1.h=C:\pk-ware\eigene projekte\2020\AMExchange\AMExchangePCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.691,C:\pk-ware\eigene projekte\2020\10.4\AMExchange\FVersanddaten.dfm=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.980,=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\SLOrder.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.107,=C:\pk-ware\Packages\SLNativ\FSQLAuswahl.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.773,=C:\pk-ware\Packages\SLNativ\FEingabeDialog.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.396,=C:\pk-ware\Packages\SLNativ\FEingabeDialog.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,=C:\pk-ware\Packages\SLNativ\FSQLAuswahl.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.198,=C:\pk-ware\eigene projekte\2020\AMExchange\awsv4.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.727,=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.733,=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.691,C:\pk-ware\eigene projekte\2020\10.4\AMExchange\FVersanddaten.cpp=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.806,C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.cpp=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\AMRestAPI.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.997,C:\pk-ware\Packages\SLNativ\FMemoEingabeDialog.cpp=C:\pk-ware\Packages\SLNativ\FEingabeDialog.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.540,=C:\pk-ware\Packages\SLNativ\FMemoEingabeDialog.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.806,C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Unit2.h=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\AMRestAPI.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.729,=C:\pk-ware\Packages\10.4\PSLWAWI20\XFakt_OCX.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.989,=C:\pk-ware\Packages\10.4\PSLWAWI20\XFakt_OCX.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.980,C:\pk-ware\eigene projekte\2020\AMExchange\awsv4.cpp=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.997,C:\pk-ware\Packages\SLNativ\FMemoEingabeDialog.dfm=C:\pk-ware\Packages\SLNativ\FEingabeDialog.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.633,=C:\pk-ware\eigene projekte\2020\10.4\AMExchange\Wawi.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.003,=C:\pk-ware\Packages\10.4\PSLWAWI20\XFakt_TLB.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.745,=C:\pk-ware\Packages\10.4\PSLWAWI20\XFakt_TLB.cpp</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="C:\pk-ware"/>
+    <File Path="..\..\..\Packages"/>
+    <File Path="..\..\..\Packages\10.4"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20\XFakt_TLB.cpp"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20\XFakt_TLB.cpp"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20\XFakt_TLB.h"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20\XFakt_OCX.cpp"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20\XFakt_OCX.cpp"/>
+    <File Path="..\..\..\Packages\10.4\PSLWAWI20\XFakt_OCX.h"/>
+    <File Path="..\..\..\Packages\SLNativ"/>
+    <File Path="..\..\..\Packages\SLNativ\FEingabeDialog.cpp"/>
+    <File Path="..\..\..\Packages\SLNativ\FEingabeDialog.cpp"/>
+    <File Path="..\..\..\Packages\SLNativ\FEingabeDialog.dfm"/>
+    <File Path="..\..\..\Packages\SLNativ\FEingabeDialog.h"/>
+    <File Path="..\..\..\Packages\SLNativ\FMemoEingabeDialog.cpp"/>
+    <File Path="..\..\..\Packages\SLNativ\FMemoEingabeDialog.cpp"/>
+    <File Path="..\..\..\Packages\SLNativ\FMemoEingabeDialog.dfm"/>
+    <File Path="..\..\..\Packages\SLNativ\FMemoEingabeDialog.h"/>
+    <File Path="..\..\..\Packages\SLNativ\FSQLAuswahl.cpp"/>
+    <File Path="..\..\..\Packages\SLNativ\FSQLAuswahl.cpp"/>
+    <File Path="..\..\..\Packages\SLNativ\FSQLAuswahl.dfm"/>
+    <File Path="..\..\..\Packages\SLNativ\FSQLAuswahl.h"/>
+    <File Path="AMExchange.cpp"/>
+    <File Path="AMExchangePCH1.h"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.cpp"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Unit1.h"/>
+    <File Path="AMRestAPI.cpp"/>
+    <File Path="AMRestAPI.cpp"/>
+    <File Path="AMRestAPI.h"/>
+    <File Path="Wawi.cpp"/>
+    <File Path="Wawi.cpp"/>
+    <File Path="Wawi.h"/>
+    <File Path="SLOrder.cpp"/>
+    <File Path="SLOrder.h"/>
+    <File Path="FVersanddaten.cpp"/>
+    <File Path="FVersanddaten.cpp"/>
+    <File Path="FVersanddaten.dfm"/>
+    <File Path="FVersanddaten.h"/>
+  </ProjectSortOrder>
+</BorlandProject>

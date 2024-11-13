@@ -1,5 +1,4 @@
-﻿using SelectLineWAWIApiCore.Shared.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace SelectLineWAWIApiCore.Server.Database
 {
@@ -18,7 +17,8 @@ namespace SelectLineWAWIApiCore.Server.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString(DB_CONNECTION));
+            var obj = optionsBuilder.UseSqlServer(_configuration.GetConnectionString(DB_CONNECTION));
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

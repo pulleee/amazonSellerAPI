@@ -1,0 +1,4 @@
+Zusammenfassung der Feedverarbeitung:
+	Anzahl verarbeiteter Datensätze		1
+	Anzahl erfolgreich verarbeiteter Datensätze		1
+

@@ -1,0 +1,6 @@
+Zusammenfassung der Feedverarbeitung:
+	Anzahl verarbeiteter Datensätze		0
+	Anzahl erfolgreich verarbeiteter Datensätze		0
+
+Original-Datensatz-Nr	SKU	Fehlercode	Fehlertyp	Fehlermeldungstext
+1		79523	Fehler	Please provide only one valid marketplace while uploading an invoice.

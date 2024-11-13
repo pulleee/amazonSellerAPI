@@ -6,49 +6,105 @@
 @using Syncfusion.Blazor.Layouts
 @using Syncfusion.Blazor.Buttons
 @using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Navigations
 @using System.Text.Json
 @using SelectLineWAWIApiCore.Client.Services
 @inject LogService LogService
+@inject HttpClient HttpClient
 
 <div class="control-section" id="target">
-    <div style="padding-right:10px;padding-bottom:10px;text-align: right;">
-        <SfButton CssClass="e-btn e-primary" Content="Manueller Upload" @onclick="ShowFileUloadDialog"></SfButton>
+    <div class="content">
+        <!-- Toolbar -->
+        <SfToolbar CssClass="mb-2">
+            <ToolbarItems>
+                <ToolbarItem Text="Manueller Upload" Align="ItemAlign.Left"></ToolbarItem>
+                <ToolbarItem Text="Einstellungen" Align="ItemAlign.Left"></ToolbarItem>
+                <ToolbarItem Type="ItemType.Separator"></ToolbarItem>
+                <ToolbarItem Align="ItemAlign.Right">
+                    <Template>
+                        <div class="text-white">
+                            <SfButton CssClass="@serverButtonClass" @onclick="ShowFileUloadDialog">API-Server:</SfButton>
+                            @if (HttpClient.BaseAddress == null)
+                            {
+                                <span>-</span>
+                            }
+                            else
+                            {
+                                <span class ="mx-2">@HttpClient.BaseAddress.AbsoluteUri</span>
+                            }
+                        </div> 
+                    </Template>
+                </ToolbarItem>
+                <ToolbarItem Align="ItemAlign.Right">
+                    <Template>
+                        <div class="text-white">
+                            <SfButton CssClass="@amazonButtonClass">Amazon:</SfButton>
+                            @if (HttpClient.BaseAddress == null)
+                            {
+                                <span>-</span>
+                            }
+                            else
+                            {
+                                <span class="mx-2">@HttpClient.BaseAddress.AbsoluteUri</span>
+                            }
+                        </div>                    
+                    </Template>                
+                </ToolbarItem>
+            </ToolbarItems>
+        </SfToolbar>
+
+        <!-- Dialog Report File Upload -->
+        <SfDialog Target="#target" ShowCloseIcon="true" @bind-Visible="FileUploadVisibility" IsModal="true">
+            <DialogTemplates>
+                <Header>Manueller Upload</Header>
+                <Content>
+                    <SfUploader ID="UploadFiles" AutoUpload="false" AllowedExtensions=".txt">
+                        <UploaderAsyncSettings SaveUrl="https://localhost:7168/api/Beleg/UploadFiles"></UploaderAsyncSettings>
+                        <UploaderEvents OnFailure="@OnFailureHandler" OnActionComplete="@OnActionCompleteHandler" Success="@OnSuccessHandler"></UploaderEvents>
+                    </SfUploader>
+                </Content>
+            </DialogTemplates>
+        </SfDialog>
+
+        <SfDashboardLayout Columns="3" @ref="db" AllowResizing="true">
+            <DashboardLayoutPanels>
+                <DashboardLayoutPanel Id="Log" Content="@LogTerminalComponent" Row="0" Column="0">
+                    <HeaderTemplate>Log</HeaderTemplate>
+                </DashboardLayoutPanel>
+                <DashboardLayoutPanel Id="Action" Content="@ActionsComponent" Row="1" Column="0">
+                    <HeaderTemplate>Planung</HeaderTemplate>
+                </DashboardLayoutPanel>
+                <DashboardLayoutPanel Id="Grid" Content="@BelegListComponent" Row="0" Column="1" SizeX=2 SizeY="2">
+                    <HeaderTemplate>Belege</HeaderTemplate>
+                </DashboardLayoutPanel>
+            </DashboardLayoutPanels>
+        </SfDashboardLayout>
     </div>
-
-    <!-- Manual Report to Beleg Upload -->
-    <SfDialog Target="#target" ShowCloseIcon="true" @bind-Visible="FileUploadVisibility" IsModal="true">
-        <DialogTemplates>
-            <Header>Manueller Upload</Header>
-            <Content>
-                <SfUploader ID="UploadFiles" AutoUpload="false" AllowedExtensions=".txt">
-                    <UploaderAsyncSettings SaveUrl="https://localhost:7168/api/Beleg/UploadFiles"></UploaderAsyncSettings>
-                    <UploaderEvents OnFailure="@OnFailureHandler" OnActionComplete="@OnActionCompleteHandler" Success="@OnSuccessHandler"></UploaderEvents>
-                </SfUploader>
-            </Content>
-        </DialogTemplates>
-    </SfDialog>
-
-    <SfDashboardLayout @ref="dashboardObject" Columns="3" AllowResizing="true">
-        <DashboardLayoutPanels>
-            <DashboardLayoutPanel Id="Log" Content="@LogTerminalComponent" Column="0" Row="0">
-                <HeaderTemplate>Log</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="Action" Content="@ActionsComponent" Row="1" Column="0" SizeX=1 SizeY=1>
-                <HeaderTemplate>Planung</HeaderTemplate>
-            </DashboardLayoutPanel>
-            <DashboardLayoutPanel Id="Grid" Content="@BelegListComponent" Row="0" Column="1" SizeX=2 SizeY=2>
-                <HeaderTemplate>Belege</HeaderTemplate>
-            </DashboardLayoutPanel>
-        </DashboardLayoutPanels>
-    </SfDashboardLayout>
 </div>
 
 @code {
     public bool FileUploadVisibility { get; set; } = false;
+    private string serverButtonClass, amazonButtonClass;
 
-    SfDashboardLayout dashboardObject;    
+    SfDashboardLayout db;
 
-    private void OnFailureHandler(FailureEventArgs args)
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: Get Server Config from API Server
+        if(HttpClient.BaseAddress != null)
+        {
+            // Get SelectLine SqlServer Info and Server specific stuff
+            serverButtonClass = "e-btn e-success";
+        }
+        else
+        {
+            serverButtonClass = "e-btn e-danger";
+        }
+
+        amazonButtonClass = "e-btn e-danger";
+    }
+
+    private void OnFailureHandler(Syncfusion.Blazor.Inputs.FailureEventArgs args)
     {
         if (args.Response != null)
         {
@@ -107,7 +163,7 @@
         LogService.AddLog(LogLevel.Info, "Action completed");
     }
 
-    public void ShowFileUloadDialog(EventArgs args)
+    public void ShowFileUloadDialog(System.EventArgs args)
     {
         FileUploadVisibility = true;
     }
