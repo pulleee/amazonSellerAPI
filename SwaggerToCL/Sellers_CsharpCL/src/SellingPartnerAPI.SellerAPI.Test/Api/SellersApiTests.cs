@@ -36,37 +36,7 @@ namespace SellingPartnerAPI.SellerAPI.Test
     {
         private SellersApi instance;
 
-        public static void Main(string[] args)
-        {
-            try
-            {
-                LWAAuthorizationCredentials lwaAuthorizationCredentials = new LWAAuthorizationCredentials
-                {
-                    ClientId = "amzn1.application-oa2-client.A1HODS1502BXMT",
-                    ClientSecret = "Secret=0rzBe85Hecs4w1NgVCNSMhtDwvaflrNUL6xVzJNz",
-                    RefreshToken = "Atzr|AKIAJY66HSM2BXQE2GAA",
-                    Endpoint = new Uri("https://api.amazon.com/auth/o2/token")
-                };
-                SellersApi sellersApi = new SellersApi.Builder()
-                    .SetLWAAuthorizationCredentials(lwaAuthorizationCredentials)
-                    .Build();
 
-                GetMarketplaceParticipationsResponse result = sellersApi.GetMarketplaceParticipations();
-                Console.WriteLine(result.ToJson());
-            }
-            catch (LWAException e)
-            {
-                Console.WriteLine("LWA Exception when calling SellersApi#getMarketplaceParticipations");
-                Console.WriteLine(e.getErrorCode());
-                Console.WriteLine(e.getErrorMessage());
-                Console.WriteLine(e.Message);
-            }
-            catch (ApiException e)
-            {
-                Console.WriteLine("Exception when calling SellersApi#getMarketplaceParticipations");
-                Console.WriteLine(e.Message);
-            }
-        }
 
         /// <summary>
         /// Setup before each unit test

@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelectLineWAWIApiCore.Share
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SelectLineWAWIApiCore.Client", "SelectLineWAWIApiCore.Client\SelectLineWAWIApiCore.Client.csproj", "{F151CEF8-68E9-4227-BD8D-31B6D8A3709F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellingPartnerAPI.SellerAPI", "..\..\SwaggerToCL\Sellers_CsharpCL\src\SellingPartnerAPI.SellerAPI\SellingPartnerAPI.SellerAPI.csproj", "{F81028A5-8E64-4748-9EF8-620FE3045DDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellingPartnerAPI.SellerAPI.Test", "..\..\SwaggerToCL\Sellers_CsharpCL\src\SellingPartnerAPI.SellerAPI.Test\SellingPartnerAPI.SellerAPI.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{F151CEF8-68E9-4227-BD8D-31B6D8A3709F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F151CEF8-68E9-4227-BD8D-31B6D8A3709F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F151CEF8-68E9-4227-BD8D-31B6D8A3709F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,3 +1,4 @@
+using SelectLineWAWIApiCore.Server.Amazon;
 using SelectLineWAWIApiCore.Server.Database;
 using SelectLineWAWIApiCore.Server.Services;
 
@@ -26,6 +27,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<BelegService>();
 builder.Services.AddSingleton<WAWIDbContext>();
+builder.Services.AddSingleton<AmazonAuthContext>();
 
 var app = builder.Build();
 
