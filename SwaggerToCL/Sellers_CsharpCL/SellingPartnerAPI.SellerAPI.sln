@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellingPartnerAPI.SellerAPI", "src\SellingPartnerAPI.SellerAPI\SellingPartnerAPI.SellerAPI.csproj", "{F81028A5-8E64-4748-9EF8-620FE3045DDB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellingPartnerAPI.SellerAPI", "src\SellingPartnerAPI.SellerAPI\SellingPartnerAPI.SellerAPI.csproj", "{3BFD1271-56E4-454D-891D-3DC00D1C2044}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellingPartnerAPI.SellerAPI.Test", "src\SellingPartnerAPI.SellerAPI.Test\SellingPartnerAPI.SellerAPI.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F81028A5-8E64-4748-9EF8-620FE3045DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFD1271-56E4-454D-891D-3DC00D1C2044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFD1271-56E4-454D-891D-3DC00D1C2044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFD1271-56E4-454D-891D-3DC00D1C2044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFD1271-56E4-454D-891D-3DC00D1C2044}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

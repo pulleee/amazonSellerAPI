@@ -1,6 +1,6 @@
-﻿namespace SelectLineWAWIApiCore.Server.Amazon
+﻿namespace SelectLineWAWIApiCore.Server.Amazon.Util
 {
-    public static class AmazonUtil
+    public static class Constants
     {
         public static readonly string DATE_FORMAT = "yyyy-MM-ddTHH:mm:ssZ";
 
@@ -28,6 +28,10 @@
             { "SG", "A19VAU5U5O7RUS" },
             { "AU", "A39IBJ37TRP1C6" },
             { "JP", "A1VC38T7YXB528" }
-        };        
+        };
+
+        public static Region NorthAmerica { get { return new Region("us-east-1", "https://sellingpartnerapi-na.amazon.com", "https://sandbox.sellingpartnerapi-na.amazon.com"); } }
+        public static Region Europe { get { return new Region("eu-west-1", "https://sellingpartnerapi-eu.amazon.com", "https://sandbox.sellingpartnerapi-eu.amazon.com"); } }
+        public static Region FarEast { get { return new Region("us-west-2", "https://sellingpartnerapi-fe.amazon.com", "https://sandbox.sellingpartnerapi-fe.amazon.com"); } }
     }
 }

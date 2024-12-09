@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SelectLineWAWIApiCore.Server.Services;
+using SelectLineWAWIApiCore.Server.Services.Amazon;
 using SelectLineWAWIApiCore.Shared.DTOs;
 using SelectLineWAWIApiCore.Shared.Models;
 
@@ -9,11 +10,18 @@ namespace SelectLineWAWIApiCore.Server.Controllers
     [ApiController]
     public class BelegController : ControllerBase
     {
+        private readonly OrderService _orderService;
         private readonly BelegService _belegService;
+        private readonly ReportService _reportService;
 
-        public BelegController(BelegService belegService)
+        public BelegController(BelegService belegService, OrderService orderService, ReportService reportService)
         {
             _belegService = belegService;
+            _orderService = orderService;
+            _reportService = reportService;
+
+            _reportService.GetReportsAsync();
+            //_orderService.GetOrdesFromToAsync(DateTime.Parse("2024/01/01"), DateTime.Parse("2024/11/25"));
         }
 
         // GET: api/beleg

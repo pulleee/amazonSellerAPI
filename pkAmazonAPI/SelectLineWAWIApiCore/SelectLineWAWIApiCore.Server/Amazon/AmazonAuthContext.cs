@@ -1,24 +1,55 @@
 ﻿using Amazon.SellingPartnerAPIAA;
+using Microsoft.Identity.Client;
+using SelectLineWAWIApiCore.Server.Amazon.Util;
+using SelectLineWAWIApiCore.Server.Models.Token;
 
 namespace SelectLineWAWIApiCore.Server.Amazon
 {
     public class AmazonAuthContext
     {
-        public static readonly string SECTION = "AmazonAuth";        
+        public static readonly string SECTION = "AmazonAuth";
 
-        public LWAAuthorizationCredentials LWAAuthorizationCredentials { get; set; }
+        public EnviromentManager.Environments Environment => EnviromentManager.Environemnt;
+        public LWAAuthorizationCredentials LWAAuthorizationCredentials { get; private set; }
+        public Region Region { get; private set; }
+
+        private TokenDataCache tokenCache { get; set; }
 
         public AmazonAuthContext(IConfiguration configuration)
         {
-            var config = configuration.GetSection(SECTION).GetChildren();
+            tokenCache = new TokenDataCache();
+
+            var config = configuration.GetSection(SECTION);
 
             LWAAuthorizationCredentials = new LWAAuthorizationCredentials
             {
-                ClientId = config.FirstOrDefault(x => x.Key == "ClientId")?.Value,
-                ClientSecret = config.FirstOrDefault(x => x.Key == "ClientSecret")?.Value,
-                RefreshToken = config.FirstOrDefault(x => x.Key == "RefreshToken")?.Value,
-                Endpoint = new Uri(config.FirstOrDefault(x => x.Key == "AuthEndpoint")?.Value)
+                ClientId = config.GetValue<string>("ClientId"),
+                ClientSecret = config.GetValue<string>("ClientSecret"),
+                RefreshToken = config.GetValue<string>("RefreshToken"),
+                Endpoint = new Uri(config.GetValue<string>("AuthEndpoint"))
             };
+            tokenCache.SetAWSAuthenticationTokenData(LWAAuthorizationCredentials);
+            Region = Constants.Europe;
+        }
+
+        public TokenResponse GetToken(TokenDataType tokenDataType)
+        {
+            return tokenCache.GetToken(tokenDataType);
+        }
+
+        public void SetToken(TokenDataType tokenDataType, TokenResponse token)
+        {
+            tokenCache.SetToken(tokenDataType, token);
+        }
+
+        public LWAAuthorizationCredentials GetAWSAuthenticationTokenData()
+        {
+            return tokenCache.GetLWAAuthorizationCredentials();
+        }
+
+        public void SetAWSAuthenticationTokenData(LWAAuthorizationCredentials tokenData)
+        {
+            tokenCache.SetAWSAuthenticationTokenData(tokenData);
         }
     }
 }
